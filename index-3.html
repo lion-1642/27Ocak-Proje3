@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teknolojik Gelişim Analizi</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+<style>
+    /* CSS */
+.container-35 .container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+.container-35 .container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container-35 .form-group {
+    margin-bottom: 15px;
+}
+
+.container-35 .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.container-35 .form-group input,
+.container-35 .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.container-35 .form-group button {
+    width: 100%;
+    padding: 10px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.container-35 .form-group button:hover {
+    background-color: #0056b3;
+}
+
+.container-35 table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.container-35 table, .container-35 th, .container-35 td {
+    border: 1px solid #ddd;
+}
+
+.container-35 th, .container-35 td {
+    padding: 10px;
+    text-align: left;
+}
+
+.container-35 th {
+    background-color: #007bff;
+    color: white;
+}
+
+</style>
+</head>
+<body>
+    <div class="container-35">
+        <div class="container">
+            <h2>Teknolojik Gelişim Analizi</h2>
+            <form id="tech-analysis-form">
+                <div class="form-group">
+                    <label for="tech-name">Teknoloji Adı:</label>
+                    <input type="text" id="tech-name" name="tech-name" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="development-stage">Gelişim Aşaması:</label>
+                    <select id="development-stage" name="development-stage" required>
+                        <option value="">Seçiniz...</option>
+                        <option value="research">Araştırma</option>
+                        <option value="development">Geliştirme</option>
+                        <option value="testing">Test</option>
+                        <option value="launch">Piyasaya Sürme</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="investment-amount">Yatırım Miktarı (USD):</label>
+                    <input type="number" id="investment-amount" name="investment-amount" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="impact-level">Etki Seviyesi:</label>
+                    <select id="impact-level" name="impact-level" required>
+                        <option value="">Seçiniz...</option>
+                        <option value="low">Düşük</option>
+                        <option value="medium">Orta</option>
+                        <option value="high">Yüksek</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <button type="submit">Ekle</button>
+                </div>
+            </form>
+        
+            <table id="analysis-table">
+                <thead>
+                    <tr>
+                        <th>Teknoloji Adı</th>
+                        <th>Gelişim Aşaması</th>
+                        <th>Yatırım Miktarı (USD)</th>
+                        <th>Etki Seviyesi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Tablo verileri burada eklenecek -->
+                </tbody>
+            </table>
+        </div>
+          <!-- index-3.html içinde -->
+          <div class="container">
+            <a href="index.html">
+                <button type="button"><h6>ANA SAYFA</h6></button>
+            </a>
+            <a href="index-2.html">
+                <button type="button"><h6>DOSYA-2</h6></button>
+        </div>
+
+    </div>
+
+
+
+
+<!-- ! Bootstrap JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--  -->
+<script src="bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var form = document.querySelector('.container-35 #tech-analysis-form');
+    if (form) {
+        form.onsubmit = function(event) {
+            event.preventDefault();
+            var techName = document.querySelector('.container-35 #tech-name').value;
+            var developmentStage = document.querySelector('.container-35 #development-stage').value;
+            var investmentAmount = parseFloat(document.querySelector('.container-35 #investment-amount').value);
+            var impactLevel = document.querySelector('.container-35 #impact-level').value;
+
+            var table = document.querySelector('.container-35 #analysis-table').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+
+            cell1.textContent = techName;
+            cell2.textContent = developmentStage;
+            cell3.textContent = investmentAmount.toFixed(2);
+            cell4.textContent = impactLevel;
+        };
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canlı Video İzleme</title>
+    <!-- Bootstrap CSS bağlantısı -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Yeni container-33 sınıfı stilini tanımla */
+        .container-33 {
+            padding: 0 15px;
+        }
+        /* Sayfa içeriğini merkeze alır */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+        /* Video konteynerlarını yan yana dizer */
+        .video-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        /* Video kutularının boyutunu ayarlar */
+        .video-box {
+            width: 100%; /* Mobil uyumluluk için % cinsinden genişlik */
+            max-width: 500px; /* Maksimum genişlik sınırı */
+            height: auto; /* Otomatik yükseklik */
+            margin: 10px;
+            position: relative;
+        }
+        /* Videoların boyutunu kutuya sığdırır */
+        video {
+            width: 100%;
+            height: auto; /* Otomatik yükseklik */
+        }
+        /* Yükleme butonu stilini ayarlar */
+        .upload-btn-wrapper {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        /* Yükleme butonunu gösterir */
+        .upload-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        /* Dosya seçme inputunu gizler */
+        input[type="file"] {
+            display: none;
+        }
+        /* Küçük ekranlarda videoları alt alta dizer */
+        @media (max-width: 768px) {
+            .video-container {
+                flex-direction: column;
+            }
+            .video-box {
+                width: 90%; /* Mobil cihazlarda daha geniş görünüm */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-33 my-5">
+        <!-- Video konteynerlarını container-33 içine al -->
+        <div class="video-container">
+            <div class="video-box">
+                <video id="video2" controls></video>
+                <label class="upload-btn-wrapper">
+                    <input type="file" id="fileInput2" accept="video/*" onchange="loadVideo(event, 'video2')">
+                </label>
+                <button class="upload-btn my-1" onclick="document.getElementById('fileInput2').click()">Video Yükle</button>
+            </div>
+        </div>
+        <div class="container">
+            <a href="index.html">
+                <button class="bg-danger" type="button"><h6>ANA SAYFA</h6></button>
+            </a>
+        </div>
+    </div>
+    <!-- Bootstrap ve jQuery bağlantıları -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        // Video yükleme fonksiyonu
+        function loadVideo(event, videoId) {
+            var file = event.target.files[0];
+            var types = ['video/mp4', 'video/webm', 'video/ogg'];
+            if (types.includes(file.type)) {
+                var videoElement = document.getElementById(videoId);
+                videoElement.src = URL.createObjectURL(file);
+                videoElement.load();
+                videoElement.play();
+            } else {
+                alert('Desteklenmeyen dosya formatı.');
+            }
+        }
+    </script>
+</body>
+</html>
